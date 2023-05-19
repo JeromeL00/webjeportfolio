@@ -8,17 +8,15 @@
     <div class="container">
       <div class="footer__wrapper justify--between align--center">
         <div>
-          <h2 class="text--light">J<span class="text--primary">E.</span></h2>
+          <h2 class="text--light"><?php echo get_field('footer_logo'); ?></h2>
         </div>
         
         <div class="social d--flex justify--between">
           <small class="text--light">
-            &copy; 2023 • All Rights Reserved
+            <?php echo get_field('footerpub_date'); ?>
           </small>
           <div class="links">
-            <a class="mr--2" href="#">GITHUB</a>
-            <a class="mr--2" href="#">FACEBOOK</a>
-            <a class="" href="#">INSTAGRAM</a>
+          <?php echo get_field('footer_icons'); ?>
           </div>
           
         </div>
@@ -79,6 +77,8 @@
         nav.classList.toggle("open");
   });
 
+  
+
 </script>
 
 <script>
@@ -94,7 +94,55 @@
   activeMenu();
   window.addEventListener("scroll", activeMenu);
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/min/tiny-slider.js"></script>
 
+<script type="module">
+
+  var slider = tns({
+    container: '.my-slider',
+    items: 2,
+    slideBy: 'page',
+    autoplay: false,
+    mouseDrag: true,
+    controls: false,
+    navPosition: 'bottom',
+    autoplayButtonOutput: false
+    
+  });
+  </script>
+
+<script type="module">
+
+  var slider = tns({
+    container: '.Exp-slider',
+    items: 1,
+    slideBy: 'page',
+    autoplay: false,
+    mouseDrag: true,
+    controls: false,
+    navPosition: 'buttom',
+    autoplayButtonOutput: false
+    
+  });
+  </script>
+
+  <script src="https://unpkg.com/scrollreveal"></script>
+
+<script>
+    ScrollReveal({ 
+      //reset: true,
+      distance: '80px',
+      duration: 2000,
+      delay: 200 
+      });
+      ScrollReveal().reveal('.aboutme__content',{ origin: 'top' });  
+      ScrollReveal().reveal('.aboutme__content h1', { origin: 'left' });  
+      ScrollReveal().reveal('.aboutme__icons', { origin: 'bottom' });  
+      ScrollReveal().reveal('.aboutme__content img', { origin: 'left' });  
+      ScrollReveal().reveal('.latestProj__descr', { origin: 'top' });
+      ScrollReveal().reveal('.latestProj__card', { origin: 'bottom'});
+
+  </script>
 
 </body>
 </html>

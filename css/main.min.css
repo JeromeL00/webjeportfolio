@@ -688,7 +688,8 @@
   }
   @media screen and (max-width: 870px) {
     .contact .contact__form .inputGroup textarea {
-      width: 102%;
+      width: 94%;
+      margin-left: 37px;
     }
   }
   .contact .contact__form input {
@@ -754,13 +755,6 @@
       height: auto;
       position: relative;
       left: 4rem;
-      bottom: 20rem;
-    }
-  }
-  @media screen and (max-width: 870px) {
-    .aboutme__content {
-      position: relative;
-      top: 23rem;
     }
   }
   .aboutme ul {
@@ -962,7 +956,6 @@
   .recentProjTW__items .img1 {
     overflow: hidden;
     position: relative;
-    border-top-left-radius: 1.5rem;
     width: 243px;
     height: 300px;
   }
@@ -1020,7 +1013,6 @@
   .recentProjTW__items .img3 {
     overflow: hidden;
     position: relative;
-    border-bottom-left-radius: 1.5rem;
     width: 243px;
     height: 300px;
   }

@@ -32,21 +32,17 @@
         
 
         <div class="header__wrapper d--flex justify--between">
-            <h2 style="align-items: center;">J<span class="text--primary">E.</span></h2>
+            <h2 style="align-items: center;"><?php echo get_field('header_logo'); ?></h2>
             <div class="commentBubble">
-              <a href="#contact"><i class="fa-solid fa-comment"></i></a>
+              <?php echo get_field('headercontact_fixed'); ?>
             </div>
             <nav class="nav">
                 <ul class="d--flex">
-                    <li class="links"><a href="#home">Home</a></li>
-                    <li class="links"><a href="#aboutsec">About</a></li>
-                    <li class="links"><a href="#portfolio">Portfolio</a></li>
-                    <li class="links"><a href="#contact">Contact</a></li>
+
+                <?php wp_menu_li(); ?>
+                
                     <div class="socialLinks d--flex ">
-                      <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
-                      <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                      <li><a href="#"><i class="fa-brands fa-facebook-messenger"></i></a></li>
-                      <li><a href="#"><i class="fa-brands fa-github"></i></a></li>
+                      <?php echo get_field('header_icons'); ?>
                     </div>
                 </ul>
                 

@@ -1,3 +1,10 @@
+<?php
+/*
+  Template Name: Home
+*/
+?>
+
+
 
 <?php get_header(); ?>
 
@@ -6,25 +13,28 @@
 
         <div class="banner__wrapper d--flex justify--between">
             <div class="banner__content">
-                <h4 class="text--light mt--2">Hello there, I'm</h4>
-            <h1 class="text--primary">Mark Jerome Laccay</h1>
-            <p class="text--light">And I am a <span class="multiple-text text--primary"></span></p>
+                <h4 class="text--light mt--2"><?php echo get_field('bannersub_title'); ?></h4>
+            <h1 class="text--primary"><?php echo get_field('banner_title') ?></h1>
+            <p class="text--light"> <?php echo get_field('banner_content') ?></p>
             <div class="botton">
-                <a class="btn bg--green" href="#">Download CV</a>
+                <?php echo get_field('button_label'); ?>
             </div>
             
             
             </div>
-            <img src="<?php echo get_template_directory_uri()?>./img/Profile (1).png" alt="">
+            <?php                    
+                    $img = get_field('banner_img');
+                    if ( !empty($img) ): ?>
+
+
+                    <img src="<?php echo esc_url($img['url']) ?>" alt="<?php echo esc_attr($img['alt'])?>">
+
+
+                <?php endif; ?>
         </div>
         <div class="icons mb--3">
           <h4 class="text--light mb--1">Follow Me On:</h4>
-            <ul class="gap--1 ">
-              <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
-              <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-              <li><a href="#"><i class="fa-brands fa-facebook-messenger"></i></a></li>
-              <li><a href="#"><i class="fa-brands fa-github"></i></a></li>
-            </ul>
+            <?php echo get_field('banner_icons'); ?>
           
         </div>
        
@@ -67,23 +77,20 @@
     <div class="container">
 
       <div class="aboutMe__wrapper d--flex gap--10">
-        <img src="<?php echo get_template_directory_uri()?>./img/prof.png" alt="">
-        <div class="aboutMe__content" style="text-align: left;">
-          <h3 class="text--light mb--3">About <span class="text--primary">Me</span></h3>
-          <p class="text--light mb--5 text--justify">I am seeking a job where I can work with my knowledge
-            and skills. A workplace where I know I’ll be able to explore
-            and improve myself, worthy of my hard work and passion.
-            I am a fast learner, active, approachable, and an effective
-            communicator.
-            <br>
-            <br>
-            
-            Wishing you all a good and blessed day!
-            <br>
-            <br>
-            Thank you.</p>
+      <?php                    
+                    $img = get_field('aboutme_img');
+                    if ( !empty($img) ): ?>
 
-            <small><a href="about.html" style="padding-left: 0.8rem; padding-right: 0.8rem; padding-top: 0.3rem; padding-bottom: 0.3rem; border-radius: 2rem; color: white;">Read more...</a></small>
+
+                    <img src="<?php echo esc_url($img['url']) ?>" alt="<?php echo esc_attr($img['alt'])?>">
+
+
+                <?php endif; ?>
+        <div class="aboutMe__content" style="text-align: left;">
+          <h3 class="text--light mb--3"><?php echo get_field('aboutme_title') ?></h3>
+          <p class="text--light mb--5 text--justify"><?php echo get_field('aboutme_content') ?></p>
+
+            <small><a href="about.php"style="padding-left: 0.8rem; padding-right: 0.8rem; padding-top: 0.3rem; padding-bottom: 0.3rem; border-radius: 2rem; color: white;">Read more...</a></small>
         </div>
 
         
@@ -95,54 +102,48 @@
   <section id="portfolio" class="latestProj py--6 text--light">
     <div class="container">
         <div class="latestProj__descr">
-        <h3>Latest <span class="text--primary">Project</span></h3>
-        <p>Here are my latest projects in web development.</p>
+        <h3><?php echo get_field('latestproj_title'); ?></h3>
+        <p><?php echo get_field('latestproj_desc'); ?></p>
         </div>
         
         <div class="latestProj__wrapper">
+
+        <?php if(have_rows('card_repeater')) : while(the_repeater_field('card_repeater')) : ?>
+
             <div class="latestProj__card">
+
                 <div class="cardtitle1 bg--gray">
-                    <h4>Wordpress Conversion</h4>
+                    <h4><?php echo get_sub_field('card_title') ?></h4>
                 </div>
-                <div class="cardimg">
-                    <img src="<?php echo get_template_directory_uri()?>./img/Screenshot (86).png" alt="">
+              <div class="cardimg">
+                <?php
+                    $img = get_sub_field('card_img');
+                        if ( !empty($img) ) :?>
+
+
+                        <img src="<?php echo esc_url($img['url']) ?>" alt="<?php  echo esc_attr($img['alt']) ?>">
+
+
+                    <?php endif; ?>
                     <div class="prev text--center">
-                        <p class="text--light">Preview</p>
-                        <li><a href="#"><i class="fa-solid fa-up-right-from-square"></i></a></li>
-                    </div>
-                    
-                </div>
-            </div>
-            <div class="latestProj__card">
-                <div class="cardtitle1 bg--gray">
-                    <h4>Sass/CSS Extension</h4>
-                </div>
-                <div class="cardimg">
-                    <img src="<?php echo get_template_directory_uri()?>./img/Screenshot (87).png" alt="">
-                    <div class="prev text--center">
-                        <p class="text--light">Preview</p>
-                        <li><a href="#"><i class="fa-solid fa-up-right-from-square"></i></a></li>
-                    </div>
-                    
-                </div>
-            </div>
-            <div class="latestProj__card">
-                <div class="cardtitle1 bg--gray">
-                    <h4>Tailwind CSS</h4>
-                </div>
-                <div class="cardimg">
-                    <img src="<?php echo get_template_directory_uri()?>./img/Screenshot (88).png" alt="">
-                    <div class="prev text--center">
-                        <p class="text--light">Preview</p>
-                        <li><a href="#"><i class="fa-solid fa-up-right-from-square"></i></a></li>
+                        <p class="text--light"><?php echo get_sub_field('card_prev') ?></p>
+                        <li><a href="http://localhost/cvd/home/"><i class="fa-solid fa-up-right-from-square"></i></a></li>
                     </div>
                     
                 </div>
             </div>
 
+            <?php
+                    endwhile;
+                        else : 
+                        echo "no content available";
+                    endif;
+                    wp_reset_postdata();
+                    ?>
+
         </div>
         <div class="text--center mt--3">
-            <a class="text--light" href="portfolio.html"> <u>View all</u></a>
+            <?php echo get_field('button_label2'); ?>
         </div>
 
         
@@ -165,50 +166,70 @@
   <p class="text--light mb--3">Let's Work Together!</p>
   <div class="contact__wrapper align--center">
     <div class="contact__info mb--3">
-      <div class="d--flex align--center gap--1 mb--2">
-        <i class="fa-solid fa-phone"></i>
-        <p>+63 945 572 0537</p>
-      </div>
-      <div class="d--flex align--center gap--1 mb--2">
-        <i class="fa-solid fa-envelope"></i>
-        <p>jeromelaccay183@gmail.com</p>
-      </div>
-      <div class="d--flex align--center gap--1 mb--2">
-        <i class="fa-solid fa-map-location-dot"></i>
-        <p>632 Purok 7, Brgy. Bautista <br> 
-          San Pablo City, Laguna 4000</p> 
-      </div>
+
+        <?php if(have_rows('contact_repeater')) : while(the_repeater_field('contact_repeater')) : ?>
+
+    <div class="d--flex align--center gap--1 mb--2">
+        <?php echo get_sub_field('contact_icon'); ?>
+        <p><?php echo get_sub_field('contact_desc'); ?></p>
+    </div>
+
+    <?php
+            endwhile;
+            else : 
+            echo "no content available";
+            endif;
+            wp_reset_postdata();
+            ?>
+      
     </div>
     <div class="contact__form">
       <form action="">
 
-        <div class=" forms d--flex">
-          <div class="inputGroup">
-          <label for=""></label>
-          <input id="name" type="text" placeholder="Name">
-        </div>
-        <div class="inputGroup">
-          <label for=""></label>
-          <input id="email" type="text" placeholder="Email">
-        </div>
-      </div>
-        <div class="forms d--flex">
-          <div class="inputGroup">
-            <label for=""></label>
-            <input type="text" placeholder="Mobile Number">
-          </div>
-          <div class="inputGroup">
-            <label for=""></label>
-            <input type="text" placeholder="Subject">
-          </div>
-        </div>
-        <div class="inputGroup">
-          <label for=""></label>
-          <textarea name="message" id="message" placeholder="Message"></textarea>
-        </div>
-      </form>
+      <div class=" forms d--flex">
+
+<?php if(have_rows('contactform_repeater')) : while(the_repeater_field('contactform_repeater')) : ?>
+
+  <div class="inputGroup">
+  <?php echo get_sub_field('contactform_name'); ?>
+  </div>
+  <div class="inputGroup">
+  <?php echo get_sub_field('contactform_email'); ?>
+  </div>
+
+  <?php
+          endwhile;
+          else : 
+          echo "no content available";
+          endif;
+          wp_reset_postdata();
+          ?>
+
+</div>
+<div class="forms d--flex">
+
+<?php if(have_rows('contactform_repeater')) : while(the_repeater_field('contactform_repeater')) : ?>
+
+    <div class="inputGroup">
+      <?php echo get_sub_field('contactform_mobilenum'); ?>
+    </div>
+    <div class="inputGroup">
+      <?php echo get_sub_field('contactform_subject'); ?>
+    </div>
+</div>
+    <div class="inputGroup">
+      <?php echo get_sub_field('contactform_message'); ?>
+    </div>
+    <?php
+          endwhile;
+          else : 
+          echo "no content available";
+          endif;
+          wp_reset_postdata();
+          ?>
+</form>
       <div class="btn">
-        <a href="#">Send Message</a>
+        <?php echo get_field('button_label3'); ?>
       </div>
       
     </div>
